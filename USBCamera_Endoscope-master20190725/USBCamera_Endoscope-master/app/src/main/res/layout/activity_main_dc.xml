@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorWhite">
+
+<include layout="@layout/titlebar_dc"/>
+
+    <LinearLayout
+        android:id="@+id/bottom_navigation_bar_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="@color/backgroudPrimary"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:paddingTop="5dp"
+        android:paddingLeft="5dp"
+        android:paddingRight="5dp">
+
+        <LinearLayout
+            android:layout_width="12mm"
+            android:layout_height="16mm"
+            android:orientation="vertical"
+            android:layout_gravity="center"
+            android:gravity="top"
+            android:paddingBottom="5dp"
+            android:layout_marginLeft="30dp"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            >
+            <ImageView
+                android:id="@+id/tabbutton_update"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="centerInside"
+                android:layout_gravity="center"
+                android:src="@drawable/analyse_button"
+                />
+        </LinearLayout>
+
+        <!--<Button
+            android:id="@+id/tabbutton_set"
+            android:layout_width="0dip"
+            android:layout_height="match_parent"
+            android:layout_weight="5"
+            android:text="设置"
+            android:layout_gravity="center"
+            android:gravity="center"
+            />-->
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="8" />
+
+
+        <LinearLayout
+            android:layout_width="12mm"
+            android:layout_height="16mm"
+            android:orientation="vertical"
+            android:layout_gravity="center"
+            android:gravity="bottom"
+            android:paddingBottom="5dp"
+            android:layout_marginRight="30dp"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            >
+            <ImageView
+                android:id="@+id/img_tab_history"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="centerInside"
+                android:layout_gravity="center"
+                android:src="@drawable/history_button"
+                />
+        </LinearLayout>
+
+
+
+        <!--<Button
+            android:id="@+id/tabbutton_see"
+            android:layout_width="0dip"
+            android:layout_height="match_parent"
+            android:layout_weight="5"
+            android:text="查看相册"
+            android:layout_gravity="center"
+            android:gravity="center"
+            />-->
+    </LinearLayout>
+
+    <View
+        android:id="@+id/div_tab_bar"
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:background="@color/color_line"
+        android:layout_above="@id/bottom_navigation_bar_container"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="55dp"
+        android:layout_above="@id/div_tab_bar"
+        >
+
+        <ImageView
+            android:id="@+id/ivImage"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentTop="true"
+            android:layout_gravity="center_horizontal" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="15mm"
+        android:layout_height="20mm"
+        android:orientation="vertical"
+        android:layout_gravity="center"
+        android:gravity="bottom"
+        android:paddingBottom="5dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        >
+        <ImageView
+            android:id="@+id/tabbutton_take"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="centerInside"
+            android:layout_gravity="center"
+            android:src="@drawable/camera_button"
+            />
+    </LinearLayout>
+
+</RelativeLayout>

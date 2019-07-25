@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
+    <include layout="@layout/titlebar_dc"/>
+    <ScrollView
+        android:fillViewport= "true"
+        android:layout_marginTop="55dp"
+        android:layout_marginBottom="55dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        >
+        <ListView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/text"
+            android:id="@+id/history_list"
+            >
+        </ListView>
+    </ScrollView>
+
+    <!--<Button
+        android:id="@+id/analyseBtn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:onClick="AnalyseBtnClick"
+        android:gravity="center"
+        android:text="分 析" />-->
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginBottom="5dp">
+    <Button
+        android:id="@+id/analyseBtn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:gravity="center"
+        android:background="@drawable/button_selector_white_background_blue_border"
+        android:text="分 析"
+        android:textColor="@drawable/textcolor_selector"
+        android:textSize="@dimen/font_h3"
+        />
+    </LinearLayout>
+</RelativeLayout>
