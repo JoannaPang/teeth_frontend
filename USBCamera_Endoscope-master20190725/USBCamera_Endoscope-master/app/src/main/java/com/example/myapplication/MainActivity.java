@@ -774,8 +774,8 @@ public class MainActivity extends Activity{
                 builder.show();*/
             }
             else {
-                AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
-                builder.setTitle("出错误啦！") ;
+                AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this, R.style.MyDialogStyle_normal);
+//                builder.setTitle("出错误啦！") ;
                 String errorText = "";
                 if(msg.what == 1) errorText = "用户名不存在";
                 else if(msg.what == 2) errorText = "用户名已被注册";
