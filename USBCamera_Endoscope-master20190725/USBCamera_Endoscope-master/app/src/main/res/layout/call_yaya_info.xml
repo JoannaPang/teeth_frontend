@@ -10,42 +10,47 @@
 
     android:gravity="center"
 
-    android:orientation="vertical">
+    android:orientation="vertical"
+
+    android:layout_marginTop="10dp"
+    android:layout_marginLeft="10dp"
+    android:layout_marginRight="10dp"
+    android:layout_marginBottom="10dp">
 
     <TextView
 
         android:layout_width="wrap_content"
-
         android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:text="1.请在拍照时长大嘴巴
+        \n2.请尽量保证整颗牙齿足够清晰足够大
+        \n3.请拍摄牙齿的正面
+        \n4.跳转后拍照前请使用WiFi链接内窥镜
+        \n5.请拍出像如下示例一样的图片哦"
 
-        android:text="1.请在拍照时长大嘴巴；
-        \n2.请尽量使用内窥镜拍出的整颗牙齿足够清晰足够大；\n3.请拍摄牙齿的正面；\n4.跳转Yaya后拍照前请使用WiFi链接内窥镜。"
-
-        android:textColor="#2f97e9"
-
+        android:textColor="@color/colorTitleBar"
+        android:lineSpacingExtra="5dp"
         android:textSize="18sp" />
 
-    <TextView
-        android:id="@+id/tv_toast_content"
-        android:layout_width="wrap_content"
+    <!--<TextView-->
+        <!--android:id="@+id/tv_toast_content"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_marginTop="5dp"-->
 
-        android:layout_height="wrap_content"
+        <!--android:text="拍摄示例图如下"-->
+        <!--android:textColor="@color/colorTitleBar"-->
 
-        android:layout_marginTop="5dp"
-
-        android:text="拍摄示例图如下"
-        android:textColor="#2f97e9"
-
-        android:textSize="18sp" />
+        <!--android:textSize="12dp" />-->
 
     <ImageView
-        android:layout_width="350dp"
+        android:layout_width="300dp"
 
-        android:layout_height="350dp"
+        android:layout_height="300dp"
 
         android:layout_margin="10dp"
-
-        android:layout_marginTop="5dp"
 
         android:background="@drawable/my_ic_launcher1"
 
@@ -54,7 +59,8 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:layout_marginBottom="10dp">
 
         <Button
             android:id="@+id/dialog_cancel"
@@ -63,6 +69,8 @@
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
             android:layout_weight="1"
+            android:background="@drawable/button_selector_white_background_blue_border"
+            android:textColor="@color/colorTitleBar"
             android:text="取消" />
 
         <Button
@@ -72,6 +80,8 @@
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
             android:layout_weight="1"
+            android:background="@drawable/throid_button_selector"
+            android:textColor="@color/colorWhite"
             android:text="确定" />
 
     </LinearLayout>
