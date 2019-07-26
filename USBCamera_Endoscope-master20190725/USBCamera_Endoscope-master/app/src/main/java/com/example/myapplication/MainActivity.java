@@ -662,6 +662,7 @@ public class MainActivity extends Activity{
                     // 发送图片
                     Thread sendPhoto = new Thread(new com.example.myapplication.MainActivity.SocketSendGetThread(cropResultPath));
                     sendPhoto.start();
+                    Toast.makeText(getApplicationContext(), "正在分析", Toast.LENGTH_SHORT).show();
                 }
                 else{
                     Toast.makeText(getApplicationContext(), "请重新上传选择图片", Toast.LENGTH_SHORT).show();
@@ -780,7 +781,7 @@ public class MainActivity extends Activity{
                 if(msg.what == 1) errorText = "用户名不存在";
                 else if(msg.what == 2) errorText = "用户名已被注册";
                 else if(msg.what == 3) errorText = "未识别到本机摄像头";
-                else if(msg.what == 404) errorText = "与服务器" + LocalHost + ":" + port + "连接失败；请重新上传照片";
+                else if(msg.what == 404) errorText = "分析失败，尝试与服务器" + LocalHost + ":" + port + "恢复连接，请重新上传照片";
                 builder.setMessage(errorText);
                 builder.setPositiveButton("确定",null );
                 builder.show();
