@@ -8,7 +8,7 @@
         android:layout_gravity="center_horizontal"
         android:layout_width="60mm"
         android:layout_height="100mm"
-        android:background="@drawable/welcome_page_360dpi"
+        android:background="@drawable/splash_item_0"
         android:scaleType="fitCenter"
-        />
+    />
 </LinearLayout>

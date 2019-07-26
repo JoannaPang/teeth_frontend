@@ -19,6 +19,7 @@
             <include layout="@layout/splash_item_0" />
             <include layout="@layout/splash_item_1" />
             <include layout="@layout/splash_item_2" />
+            <include layout="@layout/splash_item_3" />
         </ViewFlipper>
 
     </RelativeLayout>

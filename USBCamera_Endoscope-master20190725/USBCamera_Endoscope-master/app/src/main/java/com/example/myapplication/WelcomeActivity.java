@@ -15,7 +15,7 @@ public class WelcomeActivity extends Activity implements View.OnTouchListener{
     private static String TestLog = "TestLog";
     // zsl splash需要的变量
     private ViewFlipper viewFlipper;
-    private int viewIds[] = {R.layout.splash_item_0, R.layout.splash_item_1, R.layout.splash_item_2};
+    private int viewIds[] = {R.layout.splash_item_0, R.layout.splash_item_1, R.layout.splash_item_2, R.layout.splash_item_3};
     private float startX; //手指按下时的x坐标
     private float endX; //手指抬起时的x坐标
     private float moveX = 100f; //判断是否切换页面的标准值
