@@ -20,13 +20,7 @@
             <include layout="@layout/splash_item_1" />
             <include layout="@layout/splash_item_2" />
         </ViewFlipper>
-        <!--<ImageView-->
-            <!--android:layout_width="64mm"-->
-            <!--android:layout_height="106mm"-->
-            <!--android:background="@drawable/welcome_page_360dpi"-->
-            <!--android:adjustViewBounds="true"-->
-            <!--android:scaleType="fitCenter"-->
-             <!--/>-->
+
     </RelativeLayout>
 
     <RelativeLayout
