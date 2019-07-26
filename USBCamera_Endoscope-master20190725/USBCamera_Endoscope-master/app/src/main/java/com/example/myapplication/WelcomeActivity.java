@@ -1,8 +1,17 @@
 package com.example.myapplication;
 
+import android.Manifest;
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.content.res.Resources;
+import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
+import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
+import android.os.Environment;
 import android.os.Handler;
 import android.util.Log;
 import android.view.GestureDetector;
@@ -10,6 +19,11 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ViewFlipper;
+
+import java.io.File;
+import java.io.FileFilter;
+import java.io.FileOutputStream;
+import java.io.OutputStream;
 
 public class WelcomeActivity extends Activity implements View.OnTouchListener{
     private static String TestLog = "TestLog";
@@ -21,11 +35,14 @@ public class WelcomeActivity extends Activity implements View.OnTouchListener{
     private float moveX = 100f; //判断是否切换页面的标准值
     private GestureDetector gestureDetector; //创建手势监听器
 
+    private static String MY_PATH = "DCIM/DentalCare";//pang_add_importance
+
     // pang
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_welcome_dc);
+
         // zsl splash
         initViewFlipper();
 
