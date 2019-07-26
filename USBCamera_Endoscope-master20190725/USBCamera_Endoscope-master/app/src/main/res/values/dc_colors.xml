@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="colorTitleBar">#4bacc6</color>
+    <color name="colorDialogContent">#4bacc6</color>
     <color name="colorThyroidApp">#2c94e6</color>
 
     <color name="colorPrimary">#2c94e6</color>

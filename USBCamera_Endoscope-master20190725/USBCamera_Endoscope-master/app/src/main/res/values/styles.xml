@@ -44,12 +44,10 @@
         <item name="android:windowNoTitle">true</item>
         <!--dialog之外没有焦点的区域是否罩上黑色半透明-->
         <item name="android:backgroundDimEnabled">true</item>
-        <item name="android:background">@color/colorBlack</item>
-        <item name="android:textColor">@color/color_Blue</item>
-        <item name="android:textSize">30sp</item>
+        <item name="android:background">@color/colorWhite</item>
+        <item name="android:textColor">@color/colorBlack</item>
+        <item name="android:textSize">15sp</item>
         <item name="android:textColorPrimary">@color/colorTitleBar</item>
     </style>
-
-
 
 </resources>

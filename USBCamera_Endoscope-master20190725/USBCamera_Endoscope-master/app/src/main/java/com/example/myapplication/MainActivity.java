@@ -7,7 +7,6 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.ComponentName;
-import android.content.ContentResolver;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -24,21 +23,17 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.os.Handler;
 import android.os.Message;
-import android.os.PersistableBundle;
 import android.provider.MediaStore;
-import android.text.TextUtils;
 import android.util.Base64;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
 
-import com.github.mikephil.charting.utils.FileUtils;
 import com.theartofdev.edmodo.cropper.CropImage;
 import com.theartofdev.edmodo.cropper.CropImageView;
 
@@ -57,13 +52,10 @@ import java.net.FileNameMap;
 import java.net.URLConnection;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.List;
 import java.util.Locale;
 import java.util.concurrent.TimeUnit;
 
-import androidx.annotation.NonNull;
 import androidx.core.content.FileProvider;
-import androidx.fragment.app.Fragment;
 
 import kr.co.namee.permissiongen.PermissionFail;
 import kr.co.namee.permissiongen.PermissionGen;
@@ -77,7 +69,6 @@ import okhttp3.Request;
 import okhttp3.RequestBody;
 import okhttp3.Response;
 import okhttp3.ResponseBody;
-
 
 @SuppressLint("NewApi")
 public class MainActivity extends Activity{
@@ -336,8 +327,8 @@ public class MainActivity extends Activity{
                     //showYayaNoticeDialog(); //为了在虚拟机上进行测试//pang_add_20190620
 
                     Log.d(TestLog, "YaYa App is not installed");
-                    AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
-                    builder.setTitle("出错误啦");
+                    AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this, R.style.MyDialogStyle_normal);
+//                    builder.setTitle("出错误啦");
                     builder.setMessage("未下载辅助APP！");
                     builder.setIcon(android.R.drawable.ic_dialog_info);
                     builder.setNegativeButton("点击下载", new DialogInterface.OnClickListener() {
@@ -524,7 +515,7 @@ public class MainActivity extends Activity{
     //[P_dialog]点击拍照按钮触发，弹出拍照前提示信息
     //pang_add_20190620
     private void showYayaNoticeDialog() {
-        Dialog callYayaInfoDialog = new Dialog(this,R.style.MyDialogStyle);
+        Dialog callYayaInfoDialog = new Dialog(this, R.style.MyDialogStyle_normal);
         callYayaInfoDialog.setCanceledOnTouchOutside(true); // 点击加载框以外的区域
         LayoutInflater inflater = LayoutInflater.from(this);
         View v = inflater.inflate(R.layout.call_yaya_info, null);
@@ -560,7 +551,7 @@ public class MainActivity extends Activity{
     //pang_add_20190620
     private void showNoticeDialog() {
         AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this,R.style.MyDialogStyle_normal);
-        builder.setTitle("上传提示");
+//        builder.setTitle("上传提示");
         builder.setMessage("请选择内窥镜牙齿图片进行上传");
         builder.setIcon(android.R.drawable.ic_dialog_info);
         builder.setNegativeButton("取消", new DialogInterface.OnClickListener() {
@@ -569,7 +560,7 @@ public class MainActivity extends Activity{
                 dialog.dismiss();
             }
         });
-        builder.setPositiveButton("好的，我知道了", new DialogInterface.OnClickListener() {
+        builder.setPositiveButton("好的", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 dialog.dismiss();
@@ -1055,3 +1046,4 @@ public class MainActivity extends Activity{
         return res;
     }
 }
+

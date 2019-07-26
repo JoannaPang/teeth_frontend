@@ -249,7 +249,7 @@ public class RegisterActivity extends Activity{
                 saveAccountAndPsw();
                 AlertDialog.Builder builder = new AlertDialog.Builder(RegisterActivity.this,R.style.MyDialogStyle_normal);
                 String congraText = "注册成功";
-                builder.setTitle("恭喜！") ;
+//                builder.setTitle("恭喜！") ;
                 builder.setMessage(congraText);
                 builder.setPositiveButton("确定", new DialogInterface.OnClickListener() {
                     @Override
@@ -263,8 +263,8 @@ public class RegisterActivity extends Activity{
                 builder.show();
             }
             else {
-                AlertDialog.Builder builder = new AlertDialog.Builder(RegisterActivity.this);
-                builder.setTitle("出错误啦！") ;
+                AlertDialog.Builder builder = new AlertDialog.Builder(RegisterActivity.this, R.style.MyDialogStyle_normal);
+//                builder.setTitle("出错误啦！") ;
                 String errorText = "";
                 if(msg.what == 1) errorText = "用户名已存在";
                 else if(msg.what == 2) errorText = "两次密码不同";

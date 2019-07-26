@@ -8,6 +8,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Color;
 import android.media.ThumbnailUtils;
 import android.os.Bundle;
 import android.os.Environment;
@@ -159,7 +160,7 @@ public class CheckHistoryActivity extends Activity{
                 @Override
                 public void onClick(View v){
                     Log.d(TestLog, "onClick history item: " + historyLog.getdate());
-                    AlertDialog.Builder builder = new AlertDialog.Builder(CheckHistoryActivity.this);
+                    AlertDialog.Builder builder = new AlertDialog.Builder(CheckHistoryActivity.this, R.style.MyDialogStyle_normal);
                     LayoutInflater factory = LayoutInflater.from(CheckHistoryActivity.this);
                     View historyCheckView = factory.inflate(R.layout.history_display, null);
 
@@ -182,8 +183,10 @@ public class CheckHistoryActivity extends Activity{
                             + time.charAt(10) + time.charAt(11) + ":"
                             + time.charAt(12) + time.charAt(13);
                     dis_time.setText("上传时间:\t\t" + truetime);
+                    dis_time.setTextColor(Color.rgb(72,175,198));
                     Log.d(TestLog, "上传时间:" + truetime);
                     dis_else.setText("菌斑覆盖率:\t\t" + historyLog.getDiagno());
+                    dis_else.setTextColor(Color.rgb(72,175,198));
                     if(historyLog.getPicPath() == ""){
                         dis_pic.setImageResource(historyLog.getInitPic());
                     }
@@ -194,8 +197,8 @@ public class CheckHistoryActivity extends Activity{
 
                     Log.d(TestLog, "init hint over");
 
-                    builder.setTitle("历史记录");
-                    builder.setIcon(android.R.drawable.ic_dialog_info);
+//                    builder.setTitle("历史记录");
+//                    builder.setIcon(android.R.drawable.ic_dialog_info);
                     builder.setView(historyCheckView);
                     builder.setPositiveButton("确定", new DialogInterface.OnClickListener() {
                         @Override
