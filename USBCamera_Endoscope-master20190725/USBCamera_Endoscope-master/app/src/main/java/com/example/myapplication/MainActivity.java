@@ -734,23 +734,23 @@ public class MainActivity extends Activity{
                 ivImage.setImageBitmap(bitmap);
                 ivImage.setVisibility(View.VISIBLE);
 
-                //pang_add_20190619
-                ImageView imageRecover_pang = (ImageView)findViewById(R.id.ivImage);
-                imageRecover_pang.setOnClickListener(new View.OnClickListener() {
-                    boolean isflag = true; //设置只可以点击一次
-                    @Override
-                    public void onClick(View view) {
-                        if (isflag) {
-                            Intent intent = new Intent();
-                            intent.setClass(MainActivity.this, CheckDetailsActivity.class);
-                            startActivity(intent);
-                            isflag = false;
-                        } else {
-                            Log.d(TestLog, "already checked the details");
-                            imageRecover_pang.setVisibility(View.INVISIBLE); //点击查看一次之后即设为不可见
-                        }
-                    }
-                });
+//                //pang_add_20190619
+//                ImageView imageRecover_pang = (ImageView)findViewById(R.id.ivImage);
+//                imageRecover_pang.setOnClickListener(new View.OnClickListener() {
+//                    boolean isflag = true; //设置只可以点击一次
+//                    @Override
+//                    public void onClick(View view) {
+//                        if (isflag) {
+//                            Intent intent = new Intent();
+//                            intent.setClass(MainActivity.this, CheckDetailsActivity.class);
+//                            startActivity(intent);
+//                            isflag = false;
+//                        } else {
+//                            Log.d(TestLog, "already checked the details");
+//                            imageRecover_pang.setVisibility(View.INVISIBLE); //点击查看一次之后即设为不可见
+//                        }
+//                    }
+//                });
             }
             else if(msg.what <= 5){
                /* AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this,R.style.MyDialogStyle_normal);
