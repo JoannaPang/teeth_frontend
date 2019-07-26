@@ -31,6 +31,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 
@@ -81,12 +82,10 @@ public class MainActivity extends Activity{
     public static String BACK_DATA_PATH = "yaya/DCIM/BACK/data";
     private static String BACK_TMP_PATH = "yaya/DCIM/BACK/data/thumb";
     private static String BACK_DIAGNO_PATH = "yaya/DCIM/BACK/data/diagno";
-    private static String MY_PATH = "DCIM/DentalCare";//pang_add_importance
+    private static String MY_PATH = "DCIM/DentalCare";//pang_add_important
 
     public static int port = 9080;
     //public static int port = 5000;//个人电脑后台端口号
-
-
 
     private boolean isLogin = false;
 
@@ -100,6 +99,9 @@ public class MainActivity extends Activity{
     private static final int NOTLOGIN = 201;
 
     private ImageView ivImage;
+    private Button ivButtonImage;
+    private Button ivButtonAnalyse;
+    private TextView ivText;
     private Uri teethResultPath;
 
     private long exitTime = 0;
@@ -178,8 +180,11 @@ public class MainActivity extends Activity{
         ivImage = (ImageView) findViewById(R.id.ivImage);
         ivImage.setVisibility(View.INVISIBLE);
 
-
         autoSavedImage();
+
+        ivText = (TextView)this.findViewById(R.id.ivText);
+        ivButtonImage = (Button)this.findViewById(R.id.ivButtonImage);
+        ivButtonAnalyse = (Button)this.findViewById(R.id.ivButtonAnalyse);
 
         // 设置服务器地址及端口号（功能暂时不需要）
         /*
@@ -761,6 +766,7 @@ public class MainActivity extends Activity{
                 */
                 if(msg.what == 5) {
                     Toast.makeText(getApplicationContext(), "分析成功", Toast.LENGTH_SHORT).show();
+//                    ShowMainMessage();
                 }
                 /*
                 builder.setTitle("恭喜！") ;
@@ -775,7 +781,9 @@ public class MainActivity extends Activity{
                 if(msg.what == 1) errorText = "用户名不存在";
                 else if(msg.what == 2) errorText = "用户名已被注册";
                 else if(msg.what == 3) errorText = "未识别到本机摄像头";
-                else if(msg.what == 404) errorText = "分析失败，尝试与服务器" + LocalHost + ":" + port + "恢复连接，请重新上传照片";
+                else if(msg.what == 404) {
+                    errorText = "分析失败，尝试与服务器" + LocalHost + ":" + port + "恢复连接，请重新上传照片";
+                }
                 builder.setMessage(errorText);
                 builder.setPositiveButton("确定",null );
                 builder.show();
@@ -1039,6 +1047,20 @@ public class MainActivity extends Activity{
         }
         cursor.close();
         return res;
+    }
+
+    public void ShowMainMessage()
+    {
+        ivButtonAnalyse.setVisibility(View.VISIBLE);
+        ivButtonImage.setVisibility(View.VISIBLE);
+        ivText.setText("哈哈哈，有信息啦");
+    }
+
+    public void HideMainMessage()
+    {
+        ivButtonAnalyse.setVisibility(View.GONE);
+        ivButtonImage.setVisibility(View.GONE);
+        ivText.setText("");
     }
 }
 

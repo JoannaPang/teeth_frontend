@@ -102,17 +102,54 @@
         android:layout_height="match_parent"
         android:layout_marginTop="55dp"
         android:layout_above="@id/div_tab_bar"
+        android:orientation="vertical"
         >
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_horizontal|center_vertical"
+            android:layout_weight="1">
+            <Button
+                android:id="@+id/ivButtonImage"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="20dp"
+                android:background="@drawable/button_selector_white_background_blue_border"
+                android:text="原图"
+                android:visibility="gone"
+                android:textColor="@drawable/textcolor_selector"
+                android:textSize="@dimen/font_h3"/>
+            <Button
+                android:id="@+id/ivButtonAnalyse"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/button_selector_white_background_blue_border"
+                android:text="分析图"
+                android:visibility="gone"
+                android:textColor="@drawable/textcolor_selector"
+                android:textSize="@dimen/font_h3"/>
+        </LinearLayout>
 
         <ImageView
             android:id="@+id/ivImage"
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="6"
             android:layout_alignParentBottom="true"
             android:layout_alignParentLeft="true"
             android:layout_alignParentRight="true"
             android:layout_alignParentTop="true"
-            android:layout_gravity="center_horizontal" />
+            android:layout_gravity="center_horizontal"
+            />
+        <TextView
+            android:id="@+id/ivText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:gravity="center_horizontal"
+            android:text=""
+            />
     </LinearLayout>
 
     <LinearLayout
