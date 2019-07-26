@@ -81,7 +81,7 @@ public class MainActivity extends Activity{
     public static String BACK_DATA_PATH = "yaya/DCIM/BACK/data";
     private static String BACK_TMP_PATH = "yaya/DCIM/BACK/data/thumb";
     private static String BACK_DIAGNO_PATH = "yaya/DCIM/BACK/data/diagno";
-    private static String MY_PATH = "DCIM/DoctorT";//pang_add_importance
+    private static String MY_PATH = "DCIM/DentalCare";//pang_add_importance
 
     public static int port = 9080;
     //public static int port = 5000;//个人电脑后台端口号
@@ -182,7 +182,6 @@ public class MainActivity extends Activity{
         autoSavedImage();
 
         // 设置服务器地址及端口号（功能暂时不需要）
-        Log.d(TestLog,"lalallalal0");
         /*
         Button btn_SetPort = (Button)findViewById(R.id.tabbutton_set);
         btn_SetPort.setOnClickListener(new View.OnClickListener() {
@@ -397,6 +396,13 @@ public class MainActivity extends Activity{
     //自动保存五张图片到系统内存
     public void autoSavedImage(){
 
+        // 判断DentalCare文件夹是否已经存在
+        File dir = new File(Environment.getExternalStorageDirectory(), MY_PATH);
+        Log.d(TestLog, "文件夹已经存在:" + dir);
+        if(dir.exists()) {
+            return;
+        }
+
         File myfile1 = preCreateDir(MY_PATH);
 
         //NO.1
@@ -450,35 +456,22 @@ public class MainActivity extends Activity{
         String fn_path5 = myfile1.getAbsolutePath()+fn5;
         System.out.println(fn_path5);
 
-
         try{
-            //NO.1
-            OutputStream os1 = new FileOutputStream(fn_path1);
-            img1.compress(Bitmap.CompressFormat.PNG, 100, os1);
-            os1.close();
+            OutputStream os = new FileOutputStream(fn_path1);
+            img1.compress(Bitmap.CompressFormat.PNG, 100, os);
 
-            //NO.2
-            OutputStream os2 = new FileOutputStream(fn_path2);
-            img2.compress(Bitmap.CompressFormat.PNG, 100, os2);
-            os2.close();
+            os = new FileOutputStream(fn_path2);
+            img2.compress(Bitmap.CompressFormat.PNG, 100, os);
 
+            os = new FileOutputStream(fn_path3);
+            img3.compress(Bitmap.CompressFormat.PNG, 100, os);
 
-            //NO.3
-            OutputStream os3 = new FileOutputStream(fn_path3);
-            img3.compress(Bitmap.CompressFormat.PNG, 100, os3);
-            os3.close();
+            os = new FileOutputStream(fn_path4);
+            img4.compress(Bitmap.CompressFormat.PNG, 100, os);
 
-
-            //NO.4
-            OutputStream os4 = new FileOutputStream(fn_path4);
-            img4.compress(Bitmap.CompressFormat.PNG, 100, os4);
-            os4.close();
-
-            //NO.5
-            OutputStream os5 = new FileOutputStream(fn_path5);
-            img5.compress(Bitmap.CompressFormat.PNG, 100, os5);
-            os5.close();
-
+            os = new FileOutputStream(fn_path5);
+            img5.compress(Bitmap.CompressFormat.PNG, 100, os);
+            os.close();
         }catch(Exception e){
             Log.e("TAG", "", e);
         }
@@ -765,10 +758,11 @@ public class MainActivity extends Activity{
                     congraText = "上传成功, 正在分析";
                     isLogin = true;
                 }
-                else if(msg.what == 5) {
-                    congraText = "分析结束，点击结果图片可查看详细结果"; //pang_fix_20190619
-                    isLogin = true;
+                */
+                if(msg.what == 5) {
+                    Toast.makeText(getApplicationContext(), "分析成功", Toast.LENGTH_SHORT).show();
                 }
+                /*
                 builder.setTitle("恭喜！") ;
                 builder.setMessage(congraText);
                 builder.setPositiveButton("确定",null );

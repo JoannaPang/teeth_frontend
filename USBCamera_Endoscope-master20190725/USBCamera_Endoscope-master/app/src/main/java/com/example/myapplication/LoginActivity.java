@@ -269,7 +269,7 @@ public class LoginActivity extends Activity{
         public void handleMessage(android.os.Message msg) {
             if(msg.what == 0) {
                 saveAccountAndPsw();//保存用户名密码 -- qsr
-                Toast.makeText(getApplicationContext(), "@@登录成功@@", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), "登录成功", Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent();
                 intent.setClass(LoginActivity.this, MainActivity.class);
                 startActivity(intent);
