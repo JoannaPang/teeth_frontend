@@ -42,20 +42,30 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.BufferedOutputStream;
+import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileFilter;
+import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.net.FileNameMap;
 import java.net.URLConnection;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Date;
+import java.util.Iterator;
+import java.util.List;
+import java.util.ListIterator;
 import java.util.Locale;
 import java.util.concurrent.TimeUnit;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.core.content.FileProvider;
 
 import kr.co.namee.permissiongen.PermissionFail;
@@ -102,6 +112,8 @@ public class MainActivity extends Activity{
     private Button ivButtonImage;
     private Button ivButtonAnalyse;
     private TextView ivText;
+    private String ivTimeString;
+    private String ivRatioString;
     private Uri teethResultPath;
 
     private long exitTime = 0;
@@ -660,7 +672,8 @@ public class MainActivity extends Activity{
                     // 发送图片
                     Thread sendPhoto = new Thread(new com.example.myapplication.MainActivity.SocketSendGetThread(cropResultPath));
                     sendPhoto.start();
-                    Toast.makeText(getApplicationContext(), "正在分析", Toast.LENGTH_SHORT).show();
+//                    Toast.makeText(getApplicationContext(), "正在分析", Toast.LENGTH_SHORT).show();
+                    ivText.setText("正在上传分析中……");
                 }
                 else{
                     Toast.makeText(getApplicationContext(), "请重新上传选择图片", Toast.LENGTH_SHORT).show();
@@ -766,6 +779,7 @@ public class MainActivity extends Activity{
                 */
                 if(msg.what == 5) {
                     Toast.makeText(getApplicationContext(), "分析成功", Toast.LENGTH_SHORT).show();
+                    GetHistoryText();
 //                    ShowMainMessage();
                 }
                 /*
@@ -1053,7 +1067,7 @@ public class MainActivity extends Activity{
     {
         ivButtonAnalyse.setVisibility(View.VISIBLE);
         ivButtonImage.setVisibility(View.VISIBLE);
-        ivText.setText("哈哈哈，有信息啦");
+        ivText.setText("拍摄时间：" + ivTimeString + "\n" + "牙菌斑占比：" + ivRatioString);
     }
 
     public void HideMainMessage()
@@ -1061,6 +1075,50 @@ public class MainActivity extends Activity{
         ivButtonAnalyse.setVisibility(View.GONE);
         ivButtonImage.setVisibility(View.GONE);
         ivText.setText("");
+    }
+
+    public void GetHistoryText()
+    {
+        HistoryLog latestLog;
+        latestLog = new HistoryLog("");
+        File HistoryFile = new File(Environment.getExternalStorageDirectory(),MainActivity.BACK_DATA_PATH + "/History.txt");
+        Log.d(TestLog, "找到路径：" + HistoryFile.getAbsolutePath());
+        try {
+            if(HistoryFile.exists()){
+                BufferedReader hisReader = new BufferedReader(new InputStreamReader(new FileInputStream(HistoryFile),"UTF-8"));
+                String lineTime = null;
+                while ((lineTime = hisReader.readLine()) != null) {
+                    Log.d(TestLog, "lineTime is:" + lineTime);
+                    latestLog = new HistoryLog(lineTime);
+                }
+                hisReader.close();
+            }
+            else{
+                Log.d(TestLog, "History.txt not exist");
+            }
+        } catch (Exception e) {
+            Log.d(TestLog, "Error when Read History.txt : " + e.getMessage());
+            return;
+        }
+
+        // 解析时间戳
+        String time =  latestLog.getdate();
+        time = time.split("_")[0] + time.split("_")[1];
+
+        String truetime = String.valueOf(time.charAt(0))
+                + String.valueOf(time.charAt(1))
+                + String.valueOf(time.charAt(2))
+                + String.valueOf(time.charAt(3)) + ".";
+        Log.d(TestLog, "上传时间:" + truetime);
+        truetime = truetime + time.charAt(4) + time.charAt(5) + "."
+                + time.charAt(6) + time.charAt(7) + ", "
+                + time.charAt(8) + time.charAt(9) + ":"
+                + time.charAt(10) + time.charAt(11) + ":"
+                + time.charAt(12) + time.charAt(13);
+
+        ivTimeString = truetime;
+        ivRatioString = latestLog.getDiagno();
+        ivText.setText("拍摄时间：" + ivTimeString + "\n" + "牙菌斑占比：" + ivRatioString);
     }
 }
 
